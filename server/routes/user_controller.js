@@ -61,20 +61,21 @@ module.exports = {
                                     }
                                 },
     addUser :    async function(req, res, next) {  
-                                    let firstname = req.body.firstName;
-                                    let lastname = req.body.lastName;
+                                    let firstname = req.body.firstname;
+                                    let lastname = req.body.lastname;
                                     let email = req.body.email;
-                                    let cell = req.body.phone;
-                                    let positionId = req.body.position;
+                                    let cell = req.body.cell;
+                                    let positionid = req.body.positionid;
+                                    let notice = req.body.notice;
 
                                     console.log("firstname: " + req.body.firstName);
                                     console.log("lastname: " + req.body.lastName);
                                     console.log("email: " + req.body.email);
                                     console.log("cell: " + req.body.phone);
-                                    console.log("positionId: " + req.body.position);
+                                    console.log("positionid: " + req.body.positionid);
                                 
                                     try{
-                                        let results = await db.adduser(firstname, lastname, email, cell, positionId);
+                                        let results = await db.adduser(firstname, lastname, email, cell, positionid);
                                         res.json(results);
                                     } catch(e){
                                         console.log(e);
@@ -87,18 +88,18 @@ module.exports = {
                                     let firstname = req.body.firstname;
                                     let lastname = req.body.lastname;
                                     let email = req.body.email;
-                                    let cell = req.body.phone;
-                                    let positionId = req.body.positionId;
+                                    let cell = req.body.cell;
+                                    let positionid = req.body.positionid;
 
                                     console.log("ind: " + req.body.ind);
                                     console.log("firstname: " + req.body.firstname);
                                     console.log("lastname: " + req.body.lastname);
                                     console.log("email: " + req.body.email);
-                                    console.log("cell: " + req.body.phone);
-                                    console.log("positionId: " + req.body.positionId);
+                                    console.log("cell: " + req.body.cell);
+                                    console.log("positionid: " + req.body.positionid);
                                 
                                     try{
-                                        let results = await db.updateuser( ind, firstname, lastname, email, cell, positionId);
+                                        let results = await db.updateuser( ind, firstname, lastname, email, cell, positionid);
                                         res.json(results);
                                     } catch(e){
                                         console.log(e);

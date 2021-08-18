@@ -44,7 +44,7 @@ module.exports = {
     addJob :    async function(req, res, next) {  
                                     let routeId = req.body.route;
                                     let driverId = req.body.driver;
-                                    let datestr = req.body.jobdate;
+                                    let datestr = req.body.scheduled;
                                    
                                     /*
                                     console.log("routeId: " + routeId);
@@ -70,6 +70,18 @@ module.exports = {
                                         res.sendStatus(500);
                                     }
                                 },
+    getJobsToday: async function (req, res, next)  {
+
+        console.log("!!!!!!!!!!!!!!job_controller getJobsToday: " + req.user.email);
+                                    try{
+                                        let results = await db.jobsForToday(req.user.email);
+                                        //console.log("getJobsTodayFuture: "+ JSON.stringify(results));
+                                        res.json(results);
+                                    } catch(e){
+                                        console.log(e);
+                                        res.sendStatus(500);
+                                    }
+                                },
     getJobsThisWeek: async function (req, res, next)  {
         //console.log("getJobsThisWeek---->")
                                     try{
@@ -83,7 +95,7 @@ module.exports = {
                                 },                                 
     deleteJobById: async function (req, res, next) {
                                     try{
-                                        console.log("deleteJobById, id: " + req.params.ind);
+                                        console.log("--------> deleteJobById, id: " + req.params.ind);
                                         let results = await db.deleteJobByID(req.params.ind);
                                         res.json(results);
                                     } catch(e){
@@ -94,7 +106,7 @@ module.exports = {
                              
     updateJob :    async function(req, res, next) {  
                                     let ind = req.body.ind;
-                                    let jobdate = req.body.jobdate;
+                                    let jobdate = req.body.scheduled;
                                     let route = req.body.route;
                                     let driver = req.body.driver;
                                     
@@ -111,6 +123,41 @@ module.exports = {
                                         res.sendStatus(500);
                                     }
                                     
-                                },    
+                                }, 
+                                
+    getDriverJobsToday: async function (req, res, next)  {
+
+        console.log("!!!!!!!!!!!!!!job_controller getJobsToday: " + req.user.email);
+                                    try{
+                                        let results = await db.driverJobsForToday(req.user.email);
+                                        //console.log("getJobsTodayFuture: "+ JSON.stringify(results));
+                                        res.json(results);
+                                    } catch(e){
+                                        console.log(e);
+                                        res.sendStatus(500);
+                                    }
+                                },
+    getDriverJobsThisWeek: async function (req, res, next)  {
+        console.log("!!!!!!!!!!!!!!job_controller getDriverJobsThisWeek: " + req.user.email);
+                                    try{
+                                        let results = await db.driverJobsThisWeek(req.user.email);
+                                        //console.log("getJobsTodayFuture: "+ JSON.stringify(results));
+                                        res.json(results);
+                                    } catch(e){
+                                        console.log(e);
+                                        res.sendStatus(500);
+                                    }
+                                }, 
+    getDriverJobsTodayFuture: async function (req, res, next)  {
+        console.log("!!!!!!!!!!!!!!job_controller getDriverJobsThisWeek: " + req.user.email);
+                                    try{
+                                        let results = await db.driverJobsTodayFuture(req.user.email);
+                                        //console.log("getJobsTodayFuture: "+ JSON.stringify(results));
+                                        res.json(results);
+                                    } catch(e){
+                                        console.log(e);
+                                        res.sendStatus(500);
+                                    }
+                                },                                    
                                                            
 }

@@ -1,6 +1,7 @@
 const mysql = require('mysql');
 const q = require('./queries.sql');
 
+
 const pool = mysql.createPool({
     connectionLimit: 10,
     password: '',
@@ -180,6 +181,19 @@ sechandDB.jobsThisWeek = () => {
     });
 };
 //---------- worklog
+sechandDB.addWorklog = (date, locationid, bag, driverid) => {
+    //console.log("DB addWorklog------------start")
+    return new Promise((resolve, reject) => {
+        pool.query( q.INSERT_UPDATE_WORKLOG_TODAY, [date, locationid, bag, driverid], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results);
+        });
+    });
+};
+
+
 sechandDB.getWorklog = () => {
     //console.log("DB getWorklog------------start")
     return new Promise((resolve, reject) => {
@@ -384,5 +398,202 @@ sechandDB.deleteJobByID = (id) => {
         });
     });
 };
+
+// ----------- User Access
+sechandDB.findone = (email) => {
+    return new Promise((resolve, reject) => {
+        pool.query( q.CHECK_ACCESS_BY_EMAIL, email, (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results[0]);
+        });
+    });
+};
+
+sechandDB.accessdata = (email) => {
+    return new Promise((resolve, reject) => {
+        pool.query( q.SELECT_ACCESS_DATA, [email], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            console.log(results)
+            return resolve(results);
+        });
+    });
+};
+
+sechandDB.selectpassword = (email) => {
+    return new Promise((resolve, reject) => {
+        pool.query( q.SELECT_PASSWORD, [email], (err, result) => {
+            if(err){
+                return reject(err);
+            }
+            console.log(result)
+            return resolve(result);
+        });
+    });
+};
+
+sechandDB.createaccess = ( email, hashPassword, activationLink) => {
+   
+    return new Promise((resolve, reject) => {
+        pool.query( q.CREATE_ACCESS, [email, hashPassword, activationLink], (err, results) => {
+            if(err){
+                //console.log("CREATE_ACCESS: reject")
+                return reject(err);
+            }
+            //console.log("CREATE_ACCESS: resolve")
+            return resolve(results);
+        });
+    });
+};
+
+sechandDB.findTokenById = (accessid) => {
+    return new Promise((resolve, reject) => {
+        pool.query( q.CHECK_TOKEN_BY_ID, [accessid], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            console.log("DB findToken from token: " + results)
+            console.log(">>>>>>>>>>> DB findToken from token length: " + results.length)
+            return resolve(results);
+        });
+    });
+};
+
+sechandDB.findToken = (accessid) => {
+    return new Promise((resolve, reject) => {
+        pool.query( q.CHECK_TOKEN, [accessid], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            console.log("DB findToken from token: " + results)
+            return resolve(results);
+        });
+    });
+};
+
+sechandDB.refreshToken = (refreshtoken, accessid) => {
+    return new Promise((resolve, reject) => {
+        pool.query( q.REFRESH_TOKEN, [refreshtoken, accessid], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results[0]);
+        });
+    });
+};
+
+sechandDB.createToken = ( accessid, refreshtoken) => {
+    return new Promise((resolve, reject) => {
+        pool.query( q.CREATE_TOKEN, [ accessid, refreshtoken], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results[0]);
+        });
+    });
+};
+
+sechandDB.checkactivation = (activationlink) => {
+    return new Promise((resolve, reject) => {
+        pool.query( q.SELECT_ACCESS_ACTIVATION_LINK, [activationlink], (err, result) => {
+            if(err){
+                return reject(err);
+            }
+           
+            //console.log("checkactivation: " + result[0].id)
+            return resolve(result[0].id);
+        });
+    });
+};
+
+sechandDB.setactivated = (value, id) => {
+    console.log("setactivated: " + id)
+    return new Promise((resolve, reject) => {
+        pool.query( q.ACTIVATE_ACCESS, [value, id], (err, result) => {
+            if(err){
+                return reject(err);
+            }
+            
+            return resolve(result);
+        });
+    });
+};
+
+
+sechandDB.deleteToken = (token) => {
+    console.log("db delete token: " + token)
+    return new Promise((resolve, reject) => {
+        pool.query( q.DELETE_TOKEN, [token], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results[0]);
+        });
+    });
+};
+
+sechandDB.findTokenByToken = (token) => {
+    console.log("db find token: " + token)
+    return new Promise((resolve, reject) => {
+        pool.query( q.SELECT_TOKEN, [token], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results[0]);
+        });
+    });
+};
+
+sechandDB.driverJobsForToday = (email) => {
+    console.log("db jobs for today: " + email)
+    return new Promise((resolve, reject) => {
+        pool.query( q.SELECT_SCHEDULED_DRIVER_JOBS_TODAY, [email], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results);
+        });
+    });
+};
+
+sechandDB.driverJobsThisWeek = (email) => {
+    console.log("db jobs this week: " + email)
+    return new Promise((resolve, reject) => {
+        pool.query( q.SELECT_SCHEDULED_DRIVER_JOBS_THISWEEK, [email], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results);
+        });
+    });
+};
+
+sechandDB.driverJobsTodayFuture = (email) => {
+    console.log("db jobs for today: " + email)
+    return new Promise((resolve, reject) => {
+        pool.query( q.SELECT_SCHEDULED_DRIVER_JOBS_TODAY_FUTURE, [email], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results);
+        });
+    });
+};
+
+sechandDB.getDriverWorklog = (email) => {
+    console.log("db worklogy: " + email)
+    return new Promise((resolve, reject) => {
+        pool.query( q.SELECT_DRIVER_ALL_WORKLOG, [email], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results);
+        });
+    });
+};
+
 
 module.exports = sechandDB;
