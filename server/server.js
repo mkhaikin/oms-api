@@ -18,6 +18,12 @@ app.use(cookieParser());
 app.use('/api', apiRouter )
 app.use(errorMiddleware); // Middleware mistakes should come last in the chain of others
 
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+
 const start = async() =>{
     try{
         app.listen(process.env.PORT || '3000', () => {
