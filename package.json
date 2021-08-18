@@ -1,8 +1,11 @@
 {
-  "name": "mysql-api",
+  "name": "bins-collection-mysql",
   "version": "1.0.0",
-  "description": "",
+  "description": "api backend",
   "main": "index.js",
+  "engines": {
+    "node": "13.x"
+  },
   "scripts": {
     "dev": "npx nodemon server/server.js -w server",
     "build": "react-scripts build"
