@@ -2,13 +2,13 @@
   "name": "bins-collection-mysql",
   "version": "1.0.0",
   "description": "api backend",
-  "main": "server.js",
+  "main": "index.js",
   "engines": {
     "node": "13.x",
     "npm": "6.x"
   },
   "scripts": {
-    "dev": "npx nodemon server/server.js -w server",
+    "dev": "npx nodemon src/index.js -w ",
     "build": "react-scripts build"
   },
   "keywords": [],
