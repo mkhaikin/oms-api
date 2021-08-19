@@ -9,7 +9,8 @@
   },
   "scripts": {
     "dev": "npx nodemon src/index.js -w ",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
