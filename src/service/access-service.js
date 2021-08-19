@@ -93,7 +93,7 @@ module.exports = {
                 if(!userpassword[0].password)
                     throw  ApiError.BadRequest(`User with such e-mail address ${email} was not found.`)
 
-                const isPassEquals = await bcrypt.compare(password, userpassword[0].password)
+                const isPassEquals = bcrypt.compare(password, userpassword[0].password)
                 console.log('Password compare, isPassEquals: ' + isPassEquals)
                 if(!isPassEquals){
                     throw ApiError.BadRequest('Password is not correct.')
