@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "npx nodemon src/index.js -w ",
     "build": "react-scripts build",
-    "start": "node index.js"
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "",
