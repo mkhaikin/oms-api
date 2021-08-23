@@ -1,13 +1,21 @@
 const mysql = require('mysql');
 const q = require('./queries.sql');
 
-
+/*
 const pool = mysql.createPool({
     connectionLimit: 10,
     password: '',
     user: 'root',
     database: 'binz',
     host: 'localhost'
+});
+*/
+const pool = mysql.createPool({
+    connectionLimit: 10,
+    user:"b73fedc0eb286e",
+    password:"14f55508",
+    host:"us-cdbr-east-04.cleardb.com",
+    database:"heroku_3ca7bafebfc5be2"
 });
 
 let sechandDB = {};
