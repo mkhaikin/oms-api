@@ -15,6 +15,7 @@ const router = express.Router();
 //-------------- GET
 
 //-------------- users
+router.get('/test/staff/users', (req, res, next) => getAllUsers(req, res, next)); //+
 
 router.get('/staff/users', authMiddleware, (req, res, next) => getAllUsers(req, res, next)); //+
 router.get('/staff/users/id', authMiddleware, (req, res, next) => getAllUsersIdName(req, res, next));  //+
