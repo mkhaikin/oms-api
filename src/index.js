@@ -11,8 +11,8 @@ const app = express();
 
 app.use(cors({
     credentials: true,
-    //origin: process.env.CLIENT_URL
-    origin: 'https://bins-collection-ui.herokuapp.com',
+    origin: process.env.CLIENT_URL
+    
 }));
 app.use(express.json());
 app.use(cookieParser());
