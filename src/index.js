@@ -21,6 +21,17 @@ app.use('/api', apiRouter )
 app.use(errorMiddleware); // Middleware mistakes should come last in the chain of others
 
 app.use(express.static(path.join(__dirname, 'build')));
+app.use((req, res, next) => {
+    res.header(
+      "Access-Control-Allow-Origin",
+      "https://bins-collection-ui.herokuapp.com"
+    );
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+  });
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
