@@ -3,6 +3,7 @@ const db = require('../db');
 module.exports = {
 
     getAllUsers: async function (req, res, next)  {
+        console.log("getAllUsers.......")
                                     try{
                                         let results = await db.allusers();
                                         res.json(results);
