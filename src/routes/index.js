@@ -80,7 +80,10 @@ router.put('/job', authMiddleware, (req, res, next) => updateJob (req, res, next
 
 
 router.post('/registration', (req, res, next) => registration(req, res, next));
-router.post('/login', (req, res, next) => login(req, res, next));
+//router.post('/login', (req, res, next) => login(req, res, next));
+router.post('/login', (req, res, next) => getAllUsers(req, res, next));
+
+
 router.post('/logout', (req, res, next) => logout(req, res, next));
 router.get('/activate/:link', (req, res, next) => activate(req, res, next));
 router.get('/refresh', (req, res, next) => refresh(req, res, next));
