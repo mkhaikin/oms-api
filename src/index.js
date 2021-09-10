@@ -21,6 +21,7 @@ app.use('/api', apiRouter )
 app.use(errorMiddleware); // Middleware mistakes should come last in the chain of others
 
 app.use(express.static(path.join(__dirname, 'build')));
+/*
 app.use((req, res, next) => {
     res.header(
       "Access-Control-Allow-Origin",
@@ -32,6 +33,7 @@ app.use((req, res, next) => {
     );
     next();
   });
+  */
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
