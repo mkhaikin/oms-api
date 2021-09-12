@@ -10,13 +10,20 @@ const errorMiddleware = require('./middleware/error-middleware')
 const app = express();
 /*
 app.use(cors({
+    origin: true,
     credentials: true,
-    origin: process.env.CLIENT_URL,
     methods: ["GET", "POST", "PUT", "DELETE"]
 }));
 */
 //app.use(cors({credentials: true,}));
-app.use(cors());
+app.options('*', cors())
+//app.use(cors());
+app.use(cors({
+  origin: true,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"]
+}));
+
 app.use(express.json());
 app.use(cookieParser());
 
