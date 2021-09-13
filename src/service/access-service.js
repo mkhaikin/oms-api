@@ -122,6 +122,7 @@ module.exports = {
         }
     }, 
     refreshService: async function ( refreshToken)  {
+        console.log("refreshService, refreshToken: " + refreshToken)
         if(typeof refreshToken === 'undefine' && !refreshToken)
             throw ApiError.UnautorizedError()
     console.log("refreshService : 1")
