@@ -19,8 +19,8 @@ app.use(cors({
 //app.options('*', cors())
 //app.use(cors());
 
-
-app.use(express.json());
+app.use(express.json());       // to support JSON-encoded bodies
+app.use(express.urlencoded()); // to support URL-encoded bodies
 app.use(cookieParser());
 
 app.use('/api', apiRouter )
