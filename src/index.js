@@ -8,16 +8,16 @@ const errorMiddleware = require('./middleware/error-middleware')
 
 
 const app = express();
-/* */
+/* 
 app.use(cors({
     origin: 'https://keen-brown-026739.netlify.app/',
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 }));
-/**/
+*/
 //app.use(cors({credentials: true,}));
-//app.options('*', cors())
-//app.use(cors());
+app.options('https://keen-brown-026739.netlify.app/', cors())
+app.use(cors());
 
 app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded()); // to support URL-encoded bodies
