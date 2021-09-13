@@ -8,16 +8,16 @@ const errorMiddleware = require('./middleware/error-middleware')
 
 
 const app = express();
-/* 
+/* */
 app.use(cors({
-    origin: 'https://keen-brown-026739.netlify.app/',
+    origin: 'https://keen-brown-026739.netlify.app',
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 }));
-*/
+/**/
 //app.use(cors({credentials: true,}));
-app.options('https://keen-brown-026739.netlify.app/', cors())
-app.use(cors());
+//app.options('https://keen-brown-026739.netlify.app', cors())
+//app.use(cors());
 
 app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded()); // to support URL-encoded bodies
@@ -27,19 +27,7 @@ app.use('/api', apiRouter )
 app.use(errorMiddleware); // Middleware mistakes should come last in the chain of others
 
 app.use(express.static(path.join(__dirname, 'build')));
-/*
-app.use((req, res, next) => {
-    res.header(
-      "Access-Control-Allow-Origin",
-      "https://bins-collection-ui.herokuapp.com"
-    );
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    next();
-  });
-  */
+
 app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
   next()
