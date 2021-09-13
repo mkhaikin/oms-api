@@ -41,7 +41,7 @@ module.exports = {
     login: async function (req, res, next)  {
                 try{
                     const {email, password} = req.body
-                    console.log("access_controller login, body: " + req.body)
+                    console.log("access_controller login, body: " + req.body.email + " " + req.body.password)
 console.log("access_controller login, email: " + email + ", password: " + password)
 
                   /*   const userData = await loginService(email, password);
