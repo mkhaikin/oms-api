@@ -54,7 +54,7 @@ console.log("access_controller login, email: " + email + ", password: " + passwo
                     })
                     
                 } catch(e){
-                    console.log(e);
+                    console.log("access_controller, Error in login-> " + e);
                     next(e)
                     //res.sendStatus(500);
                 }
