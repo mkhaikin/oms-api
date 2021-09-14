@@ -5,7 +5,7 @@ const db = require('../db');
  function findTokenById(accessid){
     try{
         console.log("In token table findToken search for: " + accessid)
-       const tokendata = db.findTokenById(accessid);
+       const tokendata = await db.findTokenById(accessid);
         console.log("In token table tokendata: " + tokendata.length)
 
         return tokendata 
@@ -21,10 +21,13 @@ const db = require('../db');
 
 async function refreshUserToken(refreshToken, accessid ){
     try{
-        //const results = await db.refreshToken(refreshToken, accessid);
-        const results = db.refreshToken(refreshToken, accessid);
+        /*
+        const results = await db.refreshToken(refreshToken, accessid);
+        //const results = db.refreshToken(refreshToken, accessid);
         
         return results
+*/
+        return await db.refreshToken(refreshToken, accessid);
     }catch(e){
         console.log(e);
         throw new Error(`Communication error while token refreshing`)
