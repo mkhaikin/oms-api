@@ -473,6 +473,7 @@ sechandDB.findTokenById = (accessid) => {
 
 sechandDB.findToken = (accessid) => {
     return new Promise((resolve, reject) => {
+        console.log("findToken, accessid : " + accessid)
         pool.query( q.CHECK_TOKEN_BY_ID, [accessid], (err, results) => {
             if(err){
                 return reject(err);
