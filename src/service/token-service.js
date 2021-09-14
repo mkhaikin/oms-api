@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const db = require('../db');
 //const { findToken, refreshUserToken, createToken } = require('./access-service');
 
- function findTokenById(accessid){
+ async function findTokenById(accessid){
     try{
         console.log("In token table findToken search for: " + accessid)
        const tokendata = await db.findTokenById(accessid);
