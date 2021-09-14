@@ -6,7 +6,8 @@ const db = require('../db');
 //const tokenService = require('../service/token-service');
 const {registrationService, loginService, logoutService, refreshService}  = require('../service/access-service');
 const ApiError = require('../exeptions/api-error')
-const {body, validationResult} = require('express-validator')
+const {body, validationResult} = require('express-validator');
+const { json } = require('express');
 
 module.exports = {
 
@@ -42,7 +43,7 @@ module.exports = {
                 try{
                     const {email, password} = req.body
                     console.log("access_controller login, body: " + req.body.email + " " + req.body.password)
-console.log("access_controller login, email: " + email + ", password: " + password)
+                    console.log("access_controller login, email: " + email + ", password: " + password)
 
                   /*   const userData = await loginService(email, password);
                    
@@ -50,9 +51,10 @@ console.log("access_controller login, email: " + email + ", password: " + passwo
                     return res.json(userData) */
                     loginService(email, password).then(userData =>{
                         res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly:true})
+                        console.log("loginService, userData: " + json.toString(userData))
                         return res.json(userData)
                     })
-                    
+                   
                 } catch(e){
                     console.log("access_controller, Error in login-> " + e);
                     next(e)
