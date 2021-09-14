@@ -135,7 +135,7 @@ module.exports = {
         }
     },
     async validateRefreshToken(token){
-        console.log("validateRefreshToken, JWT_REFRESH_SECRET: " + process.env.JWT_REFRESH_SECRET)
+        console.log("validateRefreshToken, token: " + token)
         try {
             const userData = jwt.verify(token, process.env.JWT_REFRESH_SECRET)
             console.log("validateRefreshToken: " + userData.email)

@@ -125,7 +125,8 @@ module.exports = {
         console.log("refreshService, refreshToken: " + refreshToken)
         if(typeof refreshToken === 'undefine' && !refreshToken)
             throw ApiError.UnautorizedError()
-    console.log("refreshService : 1")
+            
+    console.log("refreshService 1, refreshToken: " + refreshToken)
         try {
             const userData = await tokenService.validateRefreshToken(refreshToken)
             const tokenFromDb = await tokenService.findTokenByToken(refreshToken)
