@@ -51,7 +51,7 @@ module.exports = {
                     return res.json(userData) */
                     loginService(email, password).then(userData =>{
                         res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly:true})
-                        console.log("loginService, userData: " + json.toString(userData))
+                        console.log("loginService, userData: " + JSON.stringify(userData))
                         return res.json(userData)
                     })
                    
