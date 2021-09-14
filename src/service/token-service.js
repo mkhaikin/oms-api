@@ -21,13 +21,12 @@ const db = require('../db');
 
 async function refreshUserToken(refreshToken, accessid ){
     try{
-        /*
+        
         const results = await db.refreshToken(refreshToken, accessid);
-        //const results = db.refreshToken(refreshToken, accessid);
+        console.log("refreshUserToken : " + results)
         
         return results
-*/
-        return await db.refreshToken(refreshToken, accessid);
+
     }catch(e){
         console.log(e);
         throw new Error(`Communication error while token refreshing`)
@@ -63,11 +62,14 @@ module.exports = {
                 if( tokendata.length !== 0){
               
                     console.log("Refresh Token now: "  + accessid + " refreshToken: " + refreshToken)
-                    refreshUserToken(refreshToken, accessid).then((results) =>{
+                    /* refreshUserToken(refreshToken, accessid).then((results) =>{
                         console.log("saveToken result from refreshUserToken: " + results)
                         return results
-                    })
-                    
+                    }) */
+
+                    const results = await refreshUserToken(refreshToken, accessid)
+                    console.log("saveToken result from refreshUserToken: " + results)
+                    return results
                 }
                 else{
                     console.log("Create and Save new Token now, accessid: " + accessid + " refreshToken: " + refreshToken)
