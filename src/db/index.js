@@ -487,6 +487,7 @@ sechandDB.refreshToken = (refreshtoken, accessid) => {
     return new Promise((resolve, reject) => {
         pool.query( q.REFRESH_TOKEN, [refreshtoken, accessid], (err, results) => {
             if(err){
+                console.log("refreshToken: " + err)
                 return reject(err);
             }
             return resolve(results[0]);

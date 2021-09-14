@@ -21,7 +21,8 @@ const db = require('../db');
 
 async function refreshUserToken(refreshToken, accessid ){
     try{
-        const results = await db.refreshToken(refreshToken, accessid);
+        //const results = await db.refreshToken(refreshToken, accessid);
+        const results = db.refreshToken(refreshToken, accessid);
         
         return results
     }catch(e){
