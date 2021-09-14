@@ -146,6 +146,7 @@ module.exports = {
         }
     },
     async findTokenByToken(refreshToken){
+        console.log("findTokenByToken: " + refreshToken)
         try {
             const token = await db.findToken(refreshToken)
             return token
