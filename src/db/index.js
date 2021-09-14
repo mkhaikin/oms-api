@@ -464,21 +464,21 @@ sechandDB.findTokenById = (accessid) => {
                 console.log("findTokenById, DB token not found: " + err)
                 return reject(err);
             }
-            console.log("DB findToken from token ID: " + results)
+            console.log("DB findToken ID from token ID: " + results)
             console.log(">>>>>>>>>>> DB findToken from token ID length: " + results.length)
             return resolve(results);
         });
     });
 };
 
-sechandDB.findToken = (accessid) => {
+sechandDB.findToken = (token) => {
     return new Promise((resolve, reject) => {
-        console.log("findToken, accessid : " + accessid)
-        pool.query( q.CHECK_TOKEN_BY_ID, [accessid], (err, results) => {
+        console.log("findToken by token: " + token)
+        pool.query( q.CHECK_TOKEN, [token], (err, results) => {
             if(err){
                 return reject(err);
             }
-            console.log("DB findToken from token ID: " + results)
+            console.log("DB findToken from token: " + results)
             return resolve(results);
         });
     });
