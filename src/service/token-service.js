@@ -23,7 +23,7 @@ async function refreshUserToken(refreshToken, accessid ){
     try{
         
         const results = await db.refreshToken(refreshToken, accessid);
-        console.log("refreshUserToken : " + results)
+        console.log("refreshUserToken : " + JSON.stringify(results))
         
         return results
 
