@@ -24,8 +24,8 @@ async function refreshUserToken(refreshToken, accessid ){
         
         const results = await db.refreshToken(refreshToken, accessid);
         console.log("refreshUserToken : " + JSON.stringify(results))
-        
-        return results
+        console.log("refreshUserToken : " + results.affectedRows)
+        return results.affectedRows
 
     }catch(e){
         console.log(e);
