@@ -111,7 +111,7 @@ console.log("access_controller refresh, refreshToken: " + refreshToken)
                     res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly:true})
                     return res.json(userData)
                 } catch(e){
-                    console.log(e);
+                    console.log("refresh error:" + e);
                     next(e)
                     
                 }
