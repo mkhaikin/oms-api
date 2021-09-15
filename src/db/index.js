@@ -491,8 +491,8 @@ sechandDB.refreshToken = (refreshtoken, accessid) => {
                 console.log("refreshToken: " + err)
                 return reject(err);
             }
-            console.log("refreshToken: " + results[0])
-            return resolve(results[0]);
+            console.log("refreshToken: " + results)
+            return resolve(results);
         });
     });
 };
