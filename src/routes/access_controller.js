@@ -107,7 +107,7 @@ module.exports = {
                 try{
                     console.log("req.cookie:" + JSON.stringify(req.headers.cookie))
                     console.log("req.cookie:" + JSON.stringify(req.cookies.refreshToken))
-                    const {refreshToken} = req.cookie;
+                    const {refreshToken} = req.cookies.refreshToken;
 console.log("access_controller refresh, refreshToken: " + refreshToken)                    
                     const userData = await refreshService(refreshToken);                   
                     res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly:true})
