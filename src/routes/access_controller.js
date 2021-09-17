@@ -55,7 +55,7 @@ module.exports = {
                    
 
 
-                        res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly:true})
+                        res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly:true, Secure, SameSite=None})
                         console.log("loginService, userData: " + JSON.stringify(userData))
                         return res.json(userData)
                     })
@@ -106,8 +106,9 @@ module.exports = {
     refresh: async function (req, res, next)  {
                 try{
                     //console.log("req.cookie:" + req.cookies.refreshToken)
-                    console.log("req.signedCookies.refreshToken:" + req.signedCookies.refreshToken)
-                    const {refreshToken} = req.cookies.refreshToken;
+                    //console.log("req.signedCookies.refreshToken:" + req.signedCookies.refreshToken)
+                    //const {refreshToken} = req.cookies.refreshToken;
+                    const refreshToken = req.cookies[ 'refreshToken'];
 console.log("access_controller refresh, refreshToken: " + refreshToken)                    
                     const userData = await refreshService(refreshToken);                   
                     res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly:true})
