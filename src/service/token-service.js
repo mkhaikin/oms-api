@@ -67,7 +67,7 @@ module.exports = {
                         return results
                     }) */
 
-                    const results = await refreshUserToken(refreshToken, accessid)
+                    const results = refreshUserToken(refreshToken, accessid)
                     console.log("saveToken result from refreshUserToken: " + results)
                     return results
                 }
