@@ -55,7 +55,7 @@ module.exports = {
         }
     },
     async saveToken(accessid, refreshToken){
-        console.log("-----saveToken(accessid, refreshToken) input: " + accessid + " " + refreshToken)
+        console.log("-----saveToken(accessid, refreshToken) input: " + accessid + ", refreshToken: " + refreshToken)
         try{
             findTokenById(accessid).then((tokendata) => {
                 console.log("=================findtokenbyid result: " + tokendata.length)
@@ -67,7 +67,7 @@ module.exports = {
                         return results
                     }) */
 
-                    const results = refreshUserToken(refreshToken, accessid)
+                    const results = await refreshUserToken(refreshToken, accessid)
                     console.log("saveToken result from refreshUserToken: " + results)
                     return results
                 }
