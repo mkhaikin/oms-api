@@ -105,8 +105,8 @@ module.exports = {
             },
     refresh: async function (req, res, next)  {
                 try{
-                    console.log("req.cookie:" + JSON.stringify(req.headers.cookie))
-                    console.log("req.cookie:" + JSON.stringify(req.cookies.refreshToken))
+                    //console.log("req.cookie:" + req.cookies.refreshToken)
+                    console.log("req.signedCookies.refreshToken:" + req.signedCookies.refreshToken)
                     const {refreshToken} = req.cookies.refreshToken;
 console.log("access_controller refresh, refreshToken: " + refreshToken)                    
                     const userData = await refreshService(refreshToken);                   
