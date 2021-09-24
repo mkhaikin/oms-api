@@ -53,8 +53,8 @@ module.exports = {
                         console.log("userData.user.email : " + userData.user.email)                 
 
 
-                        res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly:true,
-                            sameSite: "none", secure:true, })
+                    //    res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly:true,
+                    //        sameSite: "none", secure:true, })
                         console.log("loginService, userData: " + JSON.stringify(userData))
                         return res.json(userData)
                     })
