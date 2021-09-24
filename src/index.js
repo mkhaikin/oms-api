@@ -34,11 +34,23 @@ app.get('/', (req, res, next) => {
   next()
 });
 app.use(function(req, res, next) {
+  /*
     res.header('Content-Type', 'application/json;charset=UTF-8')
     res.header('Access-Control-Allow-Credentials', true)
     res.header(
       'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept'
     )
+    */
+    res.header("Access-Control-Allow-Origin", 'https://keen-brown-026739.netlify.app');
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
+    res.header("Access-Control-Allow-Credentials", true); <--- this is the only different line I added.
+    if (req.method === "OPTIONS") {
+      return res.sendStatus(204);
+    }
    
     next()
   });
