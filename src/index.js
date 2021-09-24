@@ -47,7 +47,7 @@ app.use(function(req, res, next) {
       "Origin, X-Requested-With, Content-Type, Accept"
     );
     res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
-    res.header("Access-Control-Allow-Credentials", true); <--- this is the only different line I added.
+    res.header("Access-Control-Allow-Credentials", true); 
     if (req.method === "OPTIONS") {
       return res.sendStatus(204);
     }
