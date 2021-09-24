@@ -4,7 +4,7 @@ const apiRouter = require('./routes');
 var cors = require('cors');
 const path = require('path')
 const cookieParser = require('cookie-parser')
-const errorMiddleware = require('./middleware/error-middleware')
+//const errorMiddleware = require('./middleware/error-middleware')
 
 
 const app = express();
@@ -25,7 +25,7 @@ app.use(express.urlencoded()); // to support URL-encoded bodies
 app.use(cookieParser());
 
 app.use('/api', apiRouter )
-app.use(errorMiddleware); // Middleware mistakes should come last in the chain of others
+//app.use(errorMiddleware); // Middleware mistakes should come last in the chain of others
 
 app.use(express.static(path.join(__dirname, 'build')));
 

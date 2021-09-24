@@ -102,11 +102,11 @@ module.exports = {
                 const userbadge = await getBadge(email)
                                 
                 const badge = {email, ...{userbadge}}
-                const tokens = await tokenService.generateTokens({...badge})
-                console.log("---------------------registrationService tokens login : " + tokens.refreshToken)
-                await tokenService.saveToken(userbadge._id, tokens.refreshToken)                        
-                
-                return {...tokens, user: badge}
+                //const tokens = await tokenService.generateTokens({...badge})
+                //console.log("---------------------registrationService tokens login : " + tokens.refreshToken)
+                //await tokenService.saveToken(userbadge._id, tokens.refreshToken)    
+               //return {...tokens, user: badge}
+               return {user: badge}
 
         },
     logoutService: async function ( userid, refreshToken)  {
