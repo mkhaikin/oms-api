@@ -3,7 +3,7 @@ const express = require('express');
 const apiRouter = require('./routes');
 var cors = require('cors');
 const path = require('path')
-const cookieParser = require('cookie-parser')
+//const cookieParser = require('cookie-parser')
 //const errorMiddleware = require('./middleware/error-middleware')
 
 
@@ -13,7 +13,7 @@ app.use(cors({
     origin: 'https://keen-brown-026739.netlify.app',
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Set-Cookie'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 /**/
 //app.use(cors({credentials: true,}));
@@ -22,7 +22,7 @@ app.use(cors({
 
 app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded()); // to support URL-encoded bodies
-app.use(cookieParser());
+//app.use(cookieParser());
 
 app.use('/api', apiRouter )
 //app.use(errorMiddleware); // Middleware mistakes should come last in the chain of others
