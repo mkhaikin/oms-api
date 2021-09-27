@@ -28,19 +28,14 @@ app.use('/api', apiRouter )
 //app.use(errorMiddleware); // Middleware mistakes should come last in the chain of others
 
 app.use(express.static(path.join(__dirname, 'build')));
-
+/*
 app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
   next()
 });
+
 app.use(function(req, res, next) {
-  /*
-    res.header('Content-Type', 'application/json;charset=UTF-8')
-    res.header('Access-Control-Allow-Credentials', true)
-    res.header(
-      'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept'
-    )
-    */
+ 
     res.header("Access-Control-Allow-Origin", 'https://keen-brown-026739.netlify.app');
     res.header(
       "Access-Control-Allow-Headers",
@@ -54,7 +49,7 @@ app.use(function(req, res, next) {
    
     next()
   });
-
+*/
 
 const start = async() =>{
     try{
