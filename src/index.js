@@ -8,17 +8,17 @@ const path = require('path')
 
 
 const app = express();
-/* */
+/* 
 app.use(cors({
     origin: 'https://keen-brown-026739.netlify.app',
     //credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     //allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-/**/
+*/
 //app.use(cors({credentials: true,}));
 //app.options('https://keen-brown-026739.netlify.app', cors())
-//app.use(cors());
+app.use(cors());
 
 app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded()); // to support URL-encoded bodies
@@ -34,8 +34,9 @@ app.get('/', (req, res, next) => {
   next()
 });
  */
+/*
 app.use(function(req, res, next) {
- /*
+
     res.header("Access-Control-Allow-Origin", 'https://keen-brown-026739.netlify.app');
     res.header(
       "Access-Control-Allow-Headers",
@@ -43,14 +44,14 @@ app.use(function(req, res, next) {
     );
     res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
     res.header("Access-Control-Allow-Credentials", true); 
-    */
+    
     if (req.method === "OPTIONS") {
       return res.sendStatus(204);
     }
    
     next()
   });
-/**/
+*/
 
 const start = async() =>{
     try{
