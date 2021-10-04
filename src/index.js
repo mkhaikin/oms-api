@@ -11,9 +11,9 @@ const app = express();
 /* */
 app.use(cors({
     origin: 'https://keen-brown-026739.netlify.app',
-    credentials: true,
+    //credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    //allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 /**/
 //app.use(cors({credentials: true,}));
@@ -33,9 +33,9 @@ app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
   next()
 });
-
+ */
 app.use(function(req, res, next) {
- 
+ /*
     res.header("Access-Control-Allow-Origin", 'https://keen-brown-026739.netlify.app');
     res.header(
       "Access-Control-Allow-Headers",
@@ -43,13 +43,14 @@ app.use(function(req, res, next) {
     );
     res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
     res.header("Access-Control-Allow-Credentials", true); 
+    */
     if (req.method === "OPTIONS") {
       return res.sendStatus(204);
     }
    
     next()
   });
-*/
+/**/
 
 const start = async() =>{
     try{
