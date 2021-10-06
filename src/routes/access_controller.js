@@ -73,10 +73,13 @@ module.exports = {
                     console.log("access controller, logout iserid: " + JSON.stringify(  req.body))
                     console.log("access controller, logout iserid: " + JSON.stringify(  req.body._id))
                     console.log("access controller----------------------------------------------")
- */
+ */                 /*
                     const token = await logoutService(userid, refreshToken)
                     res.clearCookie('refreshToken')
                     return res.json(token)
+                    */
+                   const stub = await logoutService(userid) //stub for no JWT version
+                   return res.json(stub)
                 } catch(e){
                     console.log(e);
                     next(e)

@@ -109,14 +109,18 @@ module.exports = {
                return {user: badge}
 
         },
-    logoutService: async function ( userid, refreshToken)  {
+    //logoutService: async function ( userid, refreshToken)  {
+        logoutService: async function ( userid)  {
 
        /* console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         console.log("access service, userid: " + userid)
         console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~") */ 
         try{
+            /*
                 const token = await tokenService.removeToken(userid, refreshToken)
                 return token
+                */
+               return userid // stub for noJWT version
         }catch(e){
             throw ApiError.BadRequest('Logout service error')
         }
