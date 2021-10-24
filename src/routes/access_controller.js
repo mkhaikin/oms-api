@@ -79,6 +79,7 @@ module.exports = {
                     return res.json(token)
                     */
                    const stub = await logoutService(userid) //stub for no JWT version
+                   console.log("logoutService result: " + stub + " !")
                    return res.json(stub)
                 } catch(e){
                     console.log(e);
