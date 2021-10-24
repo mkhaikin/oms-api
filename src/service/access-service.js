@@ -120,7 +120,7 @@ module.exports = {
                 const token = await tokenService.removeToken(userid, refreshToken)
                 return token
                 */
-               return userid // stub for noJWT version
+               return null // stub for noJWT version
         }catch(e){
             throw ApiError.BadRequest('Logout service error')
         }
