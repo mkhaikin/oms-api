@@ -67,7 +67,7 @@ module.exports = {
             },
     logout: async function (req, res, next)  {
                 try{
-                    const {refreshToken} = req.cookies;
+                    //const {refreshToken} = req.cookies;
                     const userid = req.body._id
                     /* console.log("access controller----------------------------------------------")
                     console.log("access controller, logout iserid: " + JSON.stringify(  req.body))
